@@ -23,10 +23,9 @@ public class DatabaseConnector extends AsyncTask<String, Void, String> {
 
     private static final String TAG = "DatabaseUtils";
     private static final String BASE_URL = "http://172.27.157.75/";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "guchenji";
 
     MapsActivity context;
+    String action = null;
     DatabaseConnector(MapsActivity ctx) {
         context = ctx;
     }
@@ -34,22 +33,26 @@ public class DatabaseConnector extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        String query = params[0];
+        if(params.length == 0) return null;
+        action = params[0];
         try {
-            String queryURL = BASE_URL + query;
+            String queryURL = BASE_URL + action;
             URL url = new URL(queryURL);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
-            OutputStream outputStream = httpURLConnection.getOutputStream();
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-            String post_data = URLEncoder.encode("username", "UTF-8")+"="+URLEncoder.encode(USERNAME, "UTF-8") + "&"
-                    + URLEncoder.encode("password", "UTF-8")+"="+ URLEncoder.encode(PASSWORD, "UTF-8");
-            bufferedWriter.write(post_data);
-            bufferedWriter.flush();
-            bufferedWriter.close();
-            outputStream.close();
+
+            if(params.length > 2) {
+                String pokemon_id = params[1];
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String post_data = URLEncoder.encode("pokemon_id", "UTF-8") + "=" + URLEncoder.encode(pokemon_id, "UTF-8");
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+            }
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
             String result = "";
@@ -73,7 +76,19 @@ public class DatabaseConnector extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String rawJson){
-        context.showPokemon(rawJson);
+        switch(action){
+            case "location.php":
+                context.showPokemon(rawJson);
+                break;
+            case "type.php":
+                break;
+            case "attack.php":
+                break;
+            case "evolve.php":
+                break;
+            default:
+                Log.e(TAG, "Action not supported");
+        }
     }
 
 

@@ -158,6 +158,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onInfoWindowClick(Marker marker) {
         Intent attribute = new Intent(this, Atrribute.class);
+        attribute.putExtra("pokemon_id", marker.getSnippet());
         startActivity(attribute);
     }
 }

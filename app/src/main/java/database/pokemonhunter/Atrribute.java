@@ -41,8 +41,10 @@ public class Atrribute extends AppCompatActivity {
 
 
     void test(){
-        PlaceholderFragment fragment = (PlaceholderFragment) mSectionsPagerAdapter.getRegisteredFragment(1);
-        fragment.setView();
+        for (int i = 0; i < 3; i++) {
+            PlaceholderFragment fragment = (PlaceholderFragment) mSectionsPagerAdapter.getRegisteredFragment(i);
+            fragment.setView();
+        }
     }
 
     @Override

@@ -1,7 +1,5 @@
 package database.pokemonhunter;
 
-import android.app.AlertDialog;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -65,13 +63,10 @@ public class DatabaseConnector extends AsyncTask<String, Void, String> {
             return result;
         } catch (MalformedURLException e) {
             Log.e(TAG, "MalformedURLException");
-            e.printStackTrace();
         } catch (IOException e) {
             Log.e(TAG, "IO Exception");
-            e.printStackTrace();
         } catch (Exception e){
             Log.e(TAG, "Unknown Exception");
-            e.printStackTrace();
         }
         return null;
     }

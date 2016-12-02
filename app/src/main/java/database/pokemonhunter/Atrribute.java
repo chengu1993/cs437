@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Atrribute extends AppCompatActivity {
@@ -138,6 +139,21 @@ public class Atrribute extends AppCompatActivity {
         }
 
         public void setView(){
+            int sectionNumber = getArguments().getInt(ARG_SECTION_NUMBER);
+            switch (sectionNumber) {
+                case 1:
+                    TextView typePoke = (TextView) rootView.findViewById(R.id.t1);
+                    typePoke.setText("0");
+                    break;
+                case 2:
+                    TextView tt2 = (TextView) rootView.findViewById(R.id.t2);
+                    tt2.setText("1");
+                    break;
+                case 3:
+                    ImageView image = (ImageView) rootView.findViewById(R.id.imageView);
+                    image.setImageResource(R.drawable.pokemon001);
+                    break;
+            }
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText("Wo hehe ni yilian");
 

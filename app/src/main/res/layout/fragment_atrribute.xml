@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,5 +13,34 @@
         android:id="@+id/section_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/section_label"
+        android:layout_toEndOf="@+id/section_label"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="37dp"
+        android:id="@+id/t1" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/t1"
+        android:layout_alignStart="@+id/t1"
+        android:layout_marginTop="135dp"
+        android:id="@+id/t2" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="?android:attr/colorBackground"
+        android:layout_below="@+id/t1"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="59dp"
+        android:layout_marginTop="52dp"
+        android:id="@+id/imageView" />
 
 </RelativeLayout>

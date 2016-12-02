@@ -40,7 +40,7 @@ public class Atrribute extends AppCompatActivity {
     private ViewPager mViewPager;
 
 
-    void test(){
+    void updatePage(){
         for (int i = 0; i < 3; i++) {
             PlaceholderFragment fragment = (PlaceholderFragment) mSectionsPagerAdapter.getRegisteredFragment(i);
             fragment.setView();
@@ -73,7 +73,7 @@ public class Atrribute extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                test();
+                updatePage();
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -199,11 +199,11 @@ public class Atrribute extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "SECTION 1";
+                    return "Type";
                 case 1:
-                    return "SECTION 2";
+                    return "Attacks";
                 case 2:
-                    return "SECTION 3";
+                    return "Evolution Graph";
             }
             return null;
         }

@@ -1,6 +1,7 @@
 package database.pokemonhunter;
 
 import android.os.AsyncTask;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -24,9 +25,9 @@ public class DatabaseConnector extends AsyncTask<String, Void, String> {
     private static final String TAG = "DatabaseUtils";
     private static final String BASE_URL = "http://172.27.157.75/";
 
-    MapsActivity context;
+    FragmentActivity context;
     String action = null;
-    DatabaseConnector(MapsActivity ctx) {
+    DatabaseConnector(FragmentActivity ctx) {
         context = ctx;
     }
 
@@ -78,13 +79,16 @@ public class DatabaseConnector extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String rawJson){
         switch(action){
             case "location.php":
-                context.showPokemon(rawJson);
+                ((MapsActivity)context).showPokemon(rawJson);
                 break;
             case "type.php":
+                ((Atrribute) context).updatePage(0, rawJson);
                 break;
             case "attack.php":
+                ((Atrribute) context).updatePage(1, rawJson);
                 break;
             case "evolve.php":
+                ((Atrribute) context).updatePage(2, rawJson);
                 break;
             default:
                 Log.e(TAG, "Action not supported");

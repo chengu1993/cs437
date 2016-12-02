@@ -21,21 +21,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Locale;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
@@ -71,42 +56,28 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        //Initialize google map object
         mMap = googleMap;
-
-//        List<LatLng> positions = new LinkedList<>();
-//        positions.add(new LatLng(41.31, -72.93));
-//        positions.add(new LatLng(41.34, -72.91));
-//        positions.add(new LatLng(41.27, -72.99));
-////
-//        for(int i=0; i<positions.size(); i++){
-//            mMap.addMarker(new MarkerOptions().position(positions.get(i))
-//                    .title(new Date().toString())
-//                    .icon(BitmapDescriptorFactory.fromBitmap(IconUtils.resizeMapIcons(this, "pokemon00"+(i+1), 128, 128))));
-//
-//        }
-
 
         mMap.setOnInfoWindowClickListener(this);
 
-
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(newHaven));
 
+        //enable location and add location button listener
         mMap.setOnMyLocationButtonClickListener(this);
         enableMyLocation();
 
+        //show all pokemons
         DatabaseConnector databaseConnector = new DatabaseConnector(this);
-        databaseConnector.execute("info.php");
-
+        databaseConnector.execute("location.php");
 
     }
 
-    private static final String TAG = "DatabaseUtils";
-    private static final String BASE_URL = "http://172.27.157.75/";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "guchenji";
 
-
-
+    /**
+     * Connect to database and show pokemons according to latitude and longitude
+     * @param jsonString
+     */
     protected void showPokemon(String jsonString){
         try{
             JSONObject jsonObject = new JSONObject(jsonString);
@@ -121,14 +92,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         .title(time)
                         .snippet(String.valueOf(pokemon_id))
                         .icon(BitmapDescriptorFactory.fromBitmap(IconUtils.resizeMapIcons(this, String.format(Locale.US, "pokemon%03d", pokemon_id)))));
-
-
             }
         } catch (JSONException e){
             Log.e("JSON Parse", "Error parsing data"+ e.toString()) ;
+        } catch (Exception e){
+            Log.e("Exception", e.toString());
         }
-
-
     }
 
     /**

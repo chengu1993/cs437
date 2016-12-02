@@ -25,9 +25,9 @@ public class DatabaseConnector extends AsyncTask<String, Void, String> {
     private static final String TAG = "DatabaseUtils";
     private static final String BASE_URL = "http://172.27.157.75/";
 
-    FragmentActivity context;
+    Object context;
     String action = null;
-    DatabaseConnector(FragmentActivity ctx) {
+    DatabaseConnector(Object ctx) {
         context = ctx;
     }
 
@@ -82,13 +82,13 @@ public class DatabaseConnector extends AsyncTask<String, Void, String> {
                 ((MapsActivity)context).showPokemon(rawJson);
                 break;
             case "type.php":
-                ((Atrribute) context).updatePage(0, rawJson);
+                ((Atrribute.PlaceholderFragment) context).setView(rawJson);
                 break;
             case "attack.php":
-                ((Atrribute) context).updatePage(1, rawJson);
-                break;
+                ((Atrribute.PlaceholderFragment) context).setView(rawJson);
+                 break;
             case "evolve.php":
-                ((Atrribute) context).updatePage(2, rawJson);
+                ((Atrribute.PlaceholderFragment) context).setView(rawJson);
                 break;
             default:
                 Log.e(TAG, "Action not supported");

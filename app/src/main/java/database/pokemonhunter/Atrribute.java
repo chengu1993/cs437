@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,6 +22,16 @@ import android.view.ViewGroup;
 
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Locale;
 
 public class Atrribute extends AppCompatActivity {
 
@@ -40,12 +51,10 @@ public class Atrribute extends AppCompatActivity {
     private ViewPager mViewPager;
 
 
-    void updatePage(){
-        for (int i = 0; i < 3; i++) {
-            PlaceholderFragment fragment = (PlaceholderFragment) mSectionsPagerAdapter.getRegisteredFragment(i);
-            fragment.setView();
-        }
-    }
+//    void updatePage(int index, String jasonString){
+//        PlaceholderFragment fragment = (PlaceholderFragment) mSectionsPagerAdapter.getRegisteredFragment(index);
+//        fragment.setView(jasonString);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +82,6 @@ public class Atrribute extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updatePage();
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -136,23 +144,73 @@ public class Atrribute extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             rootView = inflater.inflate(R.layout.fragment_atrribute, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            int sectionNumber = getArguments().getInt(ARG_SECTION_NUMBER);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            switch (sectionNumber) {
+                case 1:
+                    //show all pokemons
+                    DatabaseConnector databaseConnector = new DatabaseConnector(this);
+                    databaseConnector.execute("type.php");
+            }
             return rootView;
         }
 
-        public void setView(){
+        public void setView(String jsonString){
             int sectionNumber = getArguments().getInt(ARG_SECTION_NUMBER);
             switch (sectionNumber) {
                 case 1:
-                    TextView typePoke = (TextView) rootView.findViewById(R.id.t1);
-                    typePoke.setText("0");
+                    try{
+                        JSONObject jsonObject = new JSONObject(jsonString);
+                        JSONArray types = jsonObject.getJSONArray("type");
+                        for(int i=0; i<types.length(); i++){
+                            JSONObject type = types.getJSONObject(i);
+                            String type_name = type.getString("type_name");
+                            TextView textView = (TextView) rootView.findViewById(getResources()
+                                    .getIdentifier("type"+(i+1), "id", getContext()
+                                            .getPackageName()));
+                            textView.setText(type_name);
+                        }
+                        String advantage = jsonObject.getString("advantage");
+                        TextView textView = (TextView) rootView.findViewById(R.id.advantage);
+                        textView.setText(advantage);
+                        String disadvantage = jsonObject.getString("disadvantage");
+                        TextView textView1 = (TextView) rootView.findViewById(R.id.disadvantage);
+                        textView1.setText(disadvantage);
+                    } catch (JSONException e){
+                        Log.e("JSON Parse", "Error parsing data"+ e.toString()) ;
+                    } catch (Exception e){
+                        Log.e("Exception", e.toString());
+                    }
                     break;
                 case 2:
-                    TextView tt2 = (TextView) rootView.findViewById(R.id.t2);
-                    tt2.setText("1");
+                    try{
+                        JSONObject jsonObject = new JSONObject(jsonString);
+                        JSONArray fast_attacks = jsonObject.getJSONArray("fast_attack");
+                        for(int i=0; i<fast_attacks.length(); i++){
+                            JSONObject fast_attack = fast_attacks.getJSONObject(i);
+                            String fast_attack_name = fast_attack.getString("attack_name");
+                            TextView textView = (TextView) rootView.findViewById(getResources()
+                                    .getIdentifier("fast"+(i+1), "id", getContext()
+                                            .getPackageName()));
+                            textView.setText(fast_attack_name);
+                        }
+                        JSONArray charge_attacks = jsonObject.getJSONArray("charge_attack");
+                        for(int i=0; i<charge_attacks.length(); i++){
+                            JSONObject charge_attack = charge_attacks.getJSONObject(i);
+                            String charge_attack_name = charge_attack.getString("attack_name");
+                            TextView textView = (TextView) rootView.findViewById(getResources()
+                                    .getIdentifier("charge"+(i+1), "id", getContext()
+                                            .getPackageName()));
+                            textView.setText(charge_attack_name);
+                        }
+                    } catch (JSONException e){
+                        Log.e("JSON Parse", "Error parsing data"+ e.toString()) ;
+                    } catch (Exception e){
+                        Log.e("Exception", e.toString());
+                    }
                     break;
                 case 3:
-                    ImageView image = (ImageView) rootView.findViewById(R.id.imageView);
+                    ImageView image = (ImageView) rootView.findViewById(R.id.poke1);
                     image.setImageResource(R.drawable.pokemon001);
                     break;
             }

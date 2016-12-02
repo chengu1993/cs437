@@ -113,12 +113,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             JSONArray pokemons = jsonObject.getJSONArray("pokemon");
             for(int i=0; i<pokemons.length(); i++){
                 JSONObject pokemon = pokemons.getJSONObject(i);
-                int id = pokemon.getInt("id");
                 int pokemon_id = pokemon.getInt("pokemon_id");
                 double latitude = pokemon.getDouble("latitude");
                 double longitude = pokemon.getDouble("longitude");
                 String time = pokemon.getString("time");
-//                String test = String.format(Locale.US, "pokemon%03d", pokemon_id);
                 mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude))
                         .title(time)
                         .snippet(String.valueOf(pokemon_id))

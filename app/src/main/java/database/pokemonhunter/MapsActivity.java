@@ -2,16 +2,13 @@ package database.pokemonhunter;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -20,9 +17,26 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
         ActivityCompat.OnRequestPermissionsResultCallback,
@@ -59,28 +73,65 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        List<LatLng> positions = new LinkedList<>();
-        positions.add(new LatLng(41.31, -72.93));
-        positions.add(new LatLng(41.34, -72.91));
-        positions.add(new LatLng(41.27, -72.99));
+//        List<LatLng> positions = new LinkedList<>();
+//        positions.add(new LatLng(41.31, -72.93));
+//        positions.add(new LatLng(41.34, -72.91));
+//        positions.add(new LatLng(41.27, -72.99));
+////
+//        for(int i=0; i<positions.size(); i++){
+//            mMap.addMarker(new MarkerOptions().position(positions.get(i))
+//                    .title(new Date().toString())
+//                    .icon(BitmapDescriptorFactory.fromBitmap(IconUtils.resizeMapIcons(this, "pokemon00"+(i+1), 128, 128))));
+//
+//        }
 
-        for(int i=0; i<positions.size(); i++){
-            mMap.addMarker(new MarkerOptions().position(positions.get(i))
-                    .title(new Date().toString())
-                    .icon(BitmapDescriptorFactory.fromBitmap(IconUtils.resizeMapIcons(this, "pokemon00"+(i+1), 128, 128))));
-
-        }
 
         mMap.setOnInfoWindowClickListener(this);
+
 
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(newHaven));
 
         mMap.setOnMyLocationButtonClickListener(this);
         enableMyLocation();
 
+        DatabaseConnector databaseConnector = new DatabaseConnector(this);
+        databaseConnector.execute("info.php");
+
+
     }
 
+    private static final String TAG = "DatabaseUtils";
+    private static final String BASE_URL = "http://172.27.157.75/";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "guchenji";
 
+
+
+    protected void showPokemon(String jsonString){
+        try{
+            JSONObject jsonObject = new JSONObject(jsonString);
+            JSONArray pokemons = jsonObject.getJSONArray("pokemon");
+            for(int i=0; i<pokemons.length(); i++){
+                JSONObject pokemon = pokemons.getJSONObject(i);
+                int id = pokemon.getInt("id");
+                int pokemon_id = pokemon.getInt("pokemon_id");
+                double latitude = pokemon.getDouble("latitude");
+                double longitude = pokemon.getDouble("longitude");
+                String time = pokemon.getString("time");
+//                String test = String.format(Locale.US, "pokemon%03d", pokemon_id);
+                mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude))
+                        .title(time)
+                        .snippet(String.valueOf(pokemon_id))
+                        .icon(BitmapDescriptorFactory.fromBitmap(IconUtils.resizeMapIcons(this, String.format(Locale.US, "pokemon%03d", pokemon_id)))));
+
+
+            }
+        } catch (JSONException e){
+            Log.e("JSON Parse", "Error parsing data"+ e.toString()) ;
+        }
+
+
+    }
 
     /**
      * Enables the My Location layer if the fine location permission has been granted.

@@ -9,9 +9,9 @@ import android.graphics.BitmapFactory;
  */
 
 public class IconUtils {
-    public static Bitmap resizeMapIcons(MapsActivity mapsActivity, String iconName, int width, int height){
+    public static Bitmap resizeMapIcons(MapsActivity mapsActivity, String iconName){
         Bitmap imageBitmap = BitmapFactory.decodeResource(mapsActivity.getResources(),mapsActivity.getResources().getIdentifier(iconName, "drawable", mapsActivity.getPackageName()));
-        Bitmap resizedBitmap = Bitmap.createScaledBitmap(imageBitmap, width, height, false);
+        Bitmap resizedBitmap = Bitmap.createScaledBitmap(imageBitmap, imageBitmap.getWidth()/2, imageBitmap.getHeight()/2, false);
         return resizedBitmap;
     }
 }

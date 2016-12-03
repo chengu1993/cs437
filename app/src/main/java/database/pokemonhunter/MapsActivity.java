@@ -85,6 +85,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             for(int i=0; i<pokemons.length(); i++){
                 JSONObject pokemon = pokemons.getJSONObject(i);
                 int pokemon_id = pokemon.getInt("pokemon_id");
+//                String pokemon_name = pokemon.getString("pokemon_name");
                 double latitude = pokemon.getDouble("latitude");
                 double longitude = pokemon.getDouble("longitude");
                 String time = pokemon.getString("time");

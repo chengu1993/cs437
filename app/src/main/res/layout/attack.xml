@@ -16,7 +16,8 @@
         android:includeFontPadding="false"
         android:nestedScrollingEnabled="false"
         android:textAllCaps="false"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal" />
 
     <TextView
         android:layout_width="match_parent"
@@ -26,7 +27,8 @@
         android:includeFontPadding="false"
         android:nestedScrollingEnabled="false"
         android:textAllCaps="false"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal" />
 
     <TextView
         android:layout_height="wrap_content"
@@ -36,7 +38,8 @@
         android:includeFontPadding="false"
         android:nestedScrollingEnabled="false"
         android:textAllCaps="false"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal" />
 
     <TextView
         android:text="Charge Attack"
@@ -48,7 +51,8 @@
         android:includeFontPadding="false"
         android:nestedScrollingEnabled="false"
         android:textAllCaps="false"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal" />
 
     <TextView
         android:layout_width="match_parent"
@@ -58,7 +62,8 @@
         android:includeFontPadding="false"
         android:nestedScrollingEnabled="false"
         android:textAllCaps="false"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal" />
 
     <TextView
         android:layout_width="match_parent"
@@ -68,7 +73,8 @@
         android:includeFontPadding="false"
         android:nestedScrollingEnabled="false"
         android:textAllCaps="false"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal" />
 
     <TextView
         android:layout_width="match_parent"
@@ -78,5 +84,6 @@
         android:includeFontPadding="false"
         android:nestedScrollingEnabled="false"
         android:textAllCaps="false"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal" />
 </LinearLayout>

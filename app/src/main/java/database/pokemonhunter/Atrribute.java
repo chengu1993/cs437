@@ -192,6 +192,10 @@ public class Atrribute extends AppCompatActivity {
                         String disadvantage = jsonObject.getString("disadvantage");
                         TextView textView1 = (TextView) rootView.findViewById(R.id.disadvantage);
                         textView1.setText(disadvantage);
+                        TextView textView2 = (TextView) rootView.findViewById(R.id.strong);
+                        textView2.setText("Strong against");
+                        TextView textView3 = (TextView) rootView.findViewById(R.id.weak);
+                        textView3.setText("Weak against");
                     } catch (JSONException e){
                         Log.e("JSON Parse", "Error parsing data"+ e.toString()) ;
                     } catch (Exception e){

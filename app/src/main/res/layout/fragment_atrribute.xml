@@ -15,50 +15,6 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:text="type2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
-        android:id="@+id/type2"
-        android:layout_below="@+id/type1"
-        android:layout_alignStart="@+id/type1" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
-        android:id="@+id/type1"
-        android:text="type1"
-        android:layout_below="@+id/section_label"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:text="fast1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/poke1"
-        android:layout_alignEnd="@+id/type2"
-        android:id="@+id/fast1" />
-
-    <TextView
-        android:text="charge1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/fast2"
-        android:layout_alignStart="@+id/fast1"
-        android:layout_marginTop="45dp"
-        android:id="@+id/charge1" />
-
-    <TextView
-        android:text="fast2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:id="@+id/fast2"
-        android:layout_below="@+id/fast1"
-        android:layout_toEndOf="@+id/section_label" />
-
-    <TextView
         android:text="charge2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -66,15 +22,6 @@
         android:layout_alignEnd="@+id/charge1"
         android:layout_marginTop="28dp"
         android:id="@+id/charge2" />
-
-    <TextView
-        android:text="charge3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/charge2"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="41dp"
-        android:id="@+id/charge3" />
 
     <ImageView
         android:layout_width="50dp"
@@ -85,14 +32,6 @@
         android:layout_alignParentEnd="true" />
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="?android:attr/colorBackground"
-        android:layout_alignTop="@+id/charge3"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/poke3" />
-
-    <ImageView
         android:layout_height="50dp"
         app:srcCompat="?android:attr/colorBackground"
         android:id="@+id/poke2"
@@ -101,20 +40,97 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
-        android:text="advantage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/poke3"
-        android:layout_alignStart="@+id/charge2"
-        android:id="@+id/advantage" />
+        android:id="@+id/type1"
+        android:text="type1"
+        android:layout_below="@+id/section_label"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/type2"
+        android:text="type2"
+        android:layout_alignBottom="@+id/poke1"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="fast2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:id="@+id/fast2"
+        android:layout_below="@+id/fast1"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fast1"
+        android:text="fast1"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/type2"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="charge1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:id="@+id/charge1"
+        android:layout_below="@+id/fast2"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="disadvantage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/advantage"
-        android:layout_alignStart="@+id/advantage"
-        android:layout_marginTop="37dp"
-        android:id="@+id/disadvantage" />
+        android:id="@+id/disadvantage"
+        android:layout_marginBottom="37dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/advantage" />
+
+    <TextView
+        android:text="advantage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/advantage"
+        android:layout_below="@+id/poke3"
+        android:layout_toEndOf="@+id/charge3" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="?android:attr/colorBackground"
+        android:id="@+id/poke3"
+        android:layout_alignTop="@+id/charge3"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="charge3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="31dp"
+        android:id="@+id/charge3"
+        android:layout_below="@+id/charge2"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Strong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/advantage"
+        android:layout_alignParentStart="true"
+        android:id="@+id/strong" />
+
+    <TextView
+        android:text="Weak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="38dp"
+        android:id="@+id/weak"
+        android:layout_alignBottom="@+id/disadvantage"
+        android:layout_toEndOf="@+id/section_label" />
 
 </RelativeLayout>

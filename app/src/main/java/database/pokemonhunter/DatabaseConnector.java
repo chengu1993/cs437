@@ -1,7 +1,6 @@
 package database.pokemonhunter;
 
 import android.os.AsyncTask;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -83,13 +82,13 @@ public class DatabaseConnector extends AsyncTask<String, Void, String> {
                 ((MapsActivity)context).showPokemon(rawJson);
                 break;
             case "type.php":
-                ((Atrribute.PlaceholderFragment) context).setView(rawJson);
+                ((Attribute.PlaceholderFragment) context).setView(rawJson);
                 break;
             case "attack.php":
-                ((Atrribute.PlaceholderFragment) context).setView(rawJson);
+                ((Attribute.PlaceholderFragment) context).setView(rawJson);
                  break;
             case "evolve.php":
-                ((Atrribute.PlaceholderFragment) context).setView(rawJson);
+                ((Attribute.PlaceholderFragment) context).setView(rawJson);
                 break;
             default:
                 Log.e(TAG, "Action not supported");

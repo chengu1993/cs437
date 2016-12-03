@@ -51,6 +51,9 @@ public class Atrribute extends AppCompatActivity {
     private ViewPager mViewPager;
 
 
+    private String pokemon_id;
+
+
 //    void updatePage(int index, String jasonString){
 //        PlaceholderFragment fragment = (PlaceholderFragment) mSectionsPagerAdapter.getRegisteredFragment(index);
 //        fragment.setView(jasonString);
@@ -62,7 +65,7 @@ public class Atrribute extends AppCompatActivity {
         setContentView(R.layout.activity_atrribute);
 
         Intent intent = getIntent();
-        String pokemon_id = intent.getStringExtra("pokemon_id");
+        pokemon_id = intent.getStringExtra("pokemon_id");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -124,7 +127,12 @@ public class Atrribute extends AppCompatActivity {
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
         private View rootView = null;
-        public PlaceholderFragment() {
+        private String pokemon_id;
+        public PlaceholderFragment(){}
+
+
+        public void setPokemon_id(String pokemon_id){
+            this.pokemon_id = pokemon_id;
         }
 
         /**
@@ -149,8 +157,16 @@ public class Atrribute extends AppCompatActivity {
             switch (sectionNumber) {
                 case 1:
                     //show all pokemons
-                    DatabaseConnector databaseConnector = new DatabaseConnector(this);
-                    databaseConnector.execute("type.php");
+                    new DatabaseConnector(this).execute("type.php", pokemon_id);
+                    break;
+                case 2:
+                    new DatabaseConnector(this).execute("attack.php", pokemon_id);
+                    break;
+                case 3:
+                    new DatabaseConnector(this).execute("evolution.php", pokemon_id);
+                    break;
+                default:
+                    Log.e("Attribute", "Section Number out of bound");
             }
             return rootView;
         }
@@ -238,6 +254,7 @@ public class Atrribute extends AppCompatActivity {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             PlaceholderFragment fragment =  PlaceholderFragment.newInstance(position + 1);
+            fragment.setPokemon_id(pokemon_id);
             registeredFragments.put(position, fragment);
             return fragment;
         }

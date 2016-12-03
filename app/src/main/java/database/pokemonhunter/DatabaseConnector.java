@@ -44,11 +44,12 @@ public class DatabaseConnector extends AsyncTask<String, Void, String> {
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 
-            if(params.length > 2) {
+            if(params.length >= 2) {
                 String pokemon_id = params[1];
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
                 String post_data = URLEncoder.encode("pokemon_id", "UTF-8") + "=" + URLEncoder.encode(pokemon_id, "UTF-8");
+
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();

@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:layout_marginTop="20dp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         app:srcCompat="?android:attr/colorBackground"
@@ -14,6 +15,7 @@
         android:layout_gravity="center_horizontal" />
 
     <ImageView
+        android:layout_marginTop="20dp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         app:srcCompat="?android:attr/colorBackground"
@@ -22,6 +24,7 @@
         android:layout_gravity="center_horizontal" />
 
     <ImageView
+        android:layout_marginTop="20dp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         app:srcCompat="?android:attr/colorBackground"

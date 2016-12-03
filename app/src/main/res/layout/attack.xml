@@ -17,7 +17,8 @@
         android:nestedScrollingEnabled="false"
         android:textAllCaps="false"
         android:layout_marginTop="30dp"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -28,7 +29,8 @@
         android:nestedScrollingEnabled="false"
         android:textAllCaps="false"
         android:layout_marginTop="30dp"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:textSize="20sp" />
 
     <TextView
         android:layout_height="wrap_content"
@@ -39,7 +41,8 @@
         android:nestedScrollingEnabled="false"
         android:textAllCaps="false"
         android:layout_marginTop="30dp"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:textSize="20sp" />
 
     <TextView
         android:text="Charge Attack"
@@ -52,7 +55,8 @@
         android:nestedScrollingEnabled="false"
         android:textAllCaps="false"
         android:layout_marginTop="30dp"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -63,7 +67,8 @@
         android:nestedScrollingEnabled="false"
         android:textAllCaps="false"
         android:layout_marginTop="30dp"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -74,7 +79,8 @@
         android:nestedScrollingEnabled="false"
         android:textAllCaps="false"
         android:layout_marginTop="30dp"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -85,5 +91,6 @@
         android:nestedScrollingEnabled="false"
         android:textAllCaps="false"
         android:layout_marginTop="30dp"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:textSize="20sp" />
 </LinearLayout>

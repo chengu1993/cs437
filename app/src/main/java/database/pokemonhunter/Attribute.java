@@ -219,11 +219,12 @@ public class Attribute extends AppCompatActivity {
                         JSONArray evolve_sequence = jsonObject.getJSONArray("evolve_sequence");
 //                        ImageView image;
                         for(int i=0; i<evolve_sequence.length(); i++){
-                            String from_id = jsonObject.getString("from_id");
+                            JSONObject pokemon = evolve_sequence.getJSONObject(i);
+                            String pokemon_id = pokemon.getString("pokemon_id");
                             ImageView image = (ImageView) rootView.findViewById(getResources()
                                     .getIdentifier("poke"+(i+1), "id", getContext()
                                             .getPackageName()));
-                            image.setImageResource(getResources().getIdentifier(String.format(Locale.US, "pokemon%03d", Integer.parseInt(from_id))
+                            image.setImageResource(getResources().getIdentifier(String.format(Locale.US, "pokemon%03d", Integer.parseInt(pokemon_id))
                                     , "drawable", getContext().getPackageName()));
 
                         }

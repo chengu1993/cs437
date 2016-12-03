@@ -88,7 +88,7 @@ public class DatabaseConnector extends AsyncTask<String, Void, String> {
             case "attack.php":
                 ((Atrribute.PlaceholderFragment) context).setView(rawJson);
                  break;
-            case "evolve.php":
+            case "evolution.php":
                 ((Atrribute.PlaceholderFragment) context).setView(rawJson);
                 break;
             default:

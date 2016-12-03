@@ -1,6 +1,7 @@
 package database.pokemonhunter;
 
 import android.content.Intent;
+import android.support.annotation.IntegerRes;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -230,8 +231,31 @@ public class Atrribute extends AppCompatActivity {
                     }
                     break;
                 case 3:
-                    ImageView image = (ImageView) rootView.findViewById(R.id.poke1);
-                    image.setImageResource(R.drawable.pokemon001);
+                    try{
+                        JSONObject jsonObject = new JSONObject(jsonString);
+                        ImageView image;
+                        if(jsonObject.has("from_id")) {
+                            String from_id = jsonObject.getString("from_id");
+                            image = (ImageView) rootView.findViewById(R.id.poke1);
+                            image.setImageResource(getResources().getIdentifier(String.format(Locale.US, "pokemon%03d", Integer.parseInt(from_id))
+                                    , "drawable", getContext().getPackageName()));
+                        }
+
+                        image = (ImageView) rootView.findViewById(R.id.poke2);
+                        image.setImageResource(getResources().getIdentifier(String.format(Locale.US, "pokemon%03d", Integer.parseInt(pokemon_id))
+                                , "drawable", getContext().getPackageName()));
+
+                        if(jsonObject.has("to_id")) {
+                            String to_id = jsonObject.getString("to_id");
+                            image = (ImageView) rootView.findViewById(R.id.poke3);
+                            image.setImageResource(getResources().getIdentifier(String.format(Locale.US, "pokemon%03d", Integer.parseInt(to_id))
+                                    , "drawable", getContext().getPackageName()));
+                        }
+                    } catch (JSONException e){
+                        Log.e("JSON Parse", "Error parsing data"+ e.toString()) ;
+                    } catch (Exception e){
+                        Log.e("Exception", e.toString());
+                    }
                     break;
             }
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);

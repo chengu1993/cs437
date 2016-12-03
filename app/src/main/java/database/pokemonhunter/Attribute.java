@@ -24,17 +24,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Locale;
-
-public class Atrribute extends AppCompatActivity {
+public class Attribute extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -63,7 +57,7 @@ public class Atrribute extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_atrribute);
+        setContentView(R.layout.activity_attribute);
 
         Intent intent = getIntent();
         pokemon_id = intent.getStringExtra("pokemon_id");
@@ -151,19 +145,18 @@ public class Atrribute extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            rootView = inflater.inflate(R.layout.fragment_atrribute, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             int sectionNumber = getArguments().getInt(ARG_SECTION_NUMBER);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             switch (sectionNumber) {
                 case 1:
-                    //show all pokemons
+                    rootView = inflater.inflate(R.layout.type, container, false);
                     new DatabaseConnector(this).execute("type.php", pokemon_id);
                     break;
                 case 2:
+                    rootView = inflater.inflate(R.layout.attack, container, false);
                     new DatabaseConnector(this).execute("attack.php", pokemon_id);
                     break;
                 case 3:
+                    rootView = inflater.inflate(R.layout.evolution, container, false);
                     new DatabaseConnector(this).execute("evolution.php", pokemon_id);
                     break;
                 default:
@@ -258,9 +251,6 @@ public class Atrribute extends AppCompatActivity {
                     }
                     break;
             }
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText("Wo hehe ni yilian");
-
         }
     }
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="fast1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fast1" />
+
+    <TextView
+        android:text="fast2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fast2" />
+
+    <TextView
+        android:text="charge1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/charge1" />
+
+    <TextView
+        android:text="charge2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/charge2" />
+
+    <TextView
+        android:text="charge3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/charge3" />
+</LinearLayout>

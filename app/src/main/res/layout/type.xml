@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="database.pokemonhunter.Attribute$PlaceholderFragment">
+
+    <TextView
+        android:text="disadvantage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/disadvantage"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="191dp" />
+
+    <TextView
+        android:text="Weak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/weak"
+        android:layout_above="@+id/disadvantage"
+        android:layout_alignEnd="@+id/type1"
+        android:layout_marginBottom="36dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/type1"
+        android:text="type1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp" />
+
+    <TextView
+        android:text="advantage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/advantage"
+        android:layout_marginBottom="50dp"
+        android:layout_above="@+id/weak"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/type2"
+        android:text="type2"
+        android:layout_below="@+id/type1"
+        android:layout_alignEnd="@+id/strong"
+        android:layout_marginTop="40dp" />
+
+    <TextView
+        android:text="Strong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/strong"
+        android:layout_alignBottom="@+id/advantage"
+        android:layout_alignStart="@+id/weak"
+        android:layout_marginBottom="16dp" />
+
+</RelativeLayout>

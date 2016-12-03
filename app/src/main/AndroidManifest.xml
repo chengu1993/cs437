@@ -39,7 +39,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Atrribute"
+            android:name=".Attribute"
             android:label="@string/title_activity_atrribute"
             android:parentActivityName=".MapsActivity"
             android:theme="@style/AppTheme.NoActionBar">

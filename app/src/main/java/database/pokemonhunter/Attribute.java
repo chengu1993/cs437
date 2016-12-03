@@ -216,23 +216,16 @@ public class Attribute extends AppCompatActivity {
                 case 3:
                     try{
                         JSONObject jsonObject = new JSONObject(jsonString);
-                        ImageView image;
-                        if(jsonObject.has("from_id")) {
+                        JSONArray evolve_sequence = jsonObject.getJSONArray("evolve_sequence");
+//                        ImageView image;
+                        for(int i=0; i<evolve_sequence.length(); i++){
                             String from_id = jsonObject.getString("from_id");
-                            image = (ImageView) rootView.findViewById(R.id.poke1);
+                            ImageView image = (ImageView) rootView.findViewById(getResources()
+                                    .getIdentifier("poke"+(i+1), "id", getContext()
+                                            .getPackageName()));
                             image.setImageResource(getResources().getIdentifier(String.format(Locale.US, "pokemon%03d", Integer.parseInt(from_id))
                                     , "drawable", getContext().getPackageName()));
-                        }
 
-                        image = (ImageView) rootView.findViewById(R.id.poke2);
-                        image.setImageResource(getResources().getIdentifier(String.format(Locale.US, "pokemon%03d", Integer.parseInt(pokemon_id))
-                                , "drawable", getContext().getPackageName()));
-
-                        if(jsonObject.has("to_id")) {
-                            String to_id = jsonObject.getString("to_id");
-                            image = (ImageView) rootView.findViewById(R.id.poke3);
-                            image.setImageResource(getResources().getIdentifier(String.format(Locale.US, "pokemon%03d", Integer.parseInt(to_id))
-                                    , "drawable", getContext().getPackageName()));
                         }
                     } catch (JSONException e){
                         Log.e("JSON Parse", "Error parsing data"+ e.toString()) ;

@@ -10,57 +10,67 @@
     tools:context="database.pokemonhunter.Attribute$PlaceholderFragment">
 
     <TextView
-        android:text="disadvantage"
+        android:text="advantage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/disadvantage"
-        android:layout_alignParentBottom="true"
+        android:id="@+id/advantage"
+        android:layout_below="@+id/strong"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="191dp" />
+        android:layout_marginTop="40dp" />
 
     <TextView
         android:text="Weak"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/weak"
-        android:layout_above="@+id/disadvantage"
+        android:layout_below="@+id/advantage"
         android:layout_alignEnd="@+id/type1"
-        android:layout_marginBottom="36dp" />
+        android:layout_marginTop="46dp"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/type1"
         android:text="type1"
+        android:layout_marginTop="46dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="12dp" />
-
-    <TextView
-        android:text="advantage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/advantage"
-        android:layout_marginBottom="50dp"
-        android:layout_above="@+id/weak"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/type2"
-        android:text="type2"
-        android:layout_below="@+id/type1"
-        android:layout_alignEnd="@+id/strong"
-        android:layout_marginTop="40dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="Strong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/strong"
-        android:layout_alignBottom="@+id/advantage"
-        android:layout_alignStart="@+id/weak"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginTop="56dp"
+        android:layout_below="@+id/type2"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/type2"
+        android:text="type2"
+        android:layout_marginTop="37dp"
+        android:layout_below="@+id/type1"
+        android:layout_alignStart="@+id/weak" />
+
+    <TextView
+        android:text="Type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/type_title"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:text="disadvantage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/disadvantage"
+        android:layout_marginTop="60dp"
+        android:layout_below="@+id/weak"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
